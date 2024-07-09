@@ -42,3 +42,9 @@ test_pipeline = [
 train_dataloader = dict(dataset=dict(pipeline=train_pipeline))
 val_dataloader = dict(dataset=dict(pipeline=test_pipeline))
 test_dataloader = dict(dataset=dict(pipeline=test_pipeline))
+
+vis_backends = [
+    dict(type='LocalVisBackend'),
+    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['cla', 'efnetv2b3', 'imagenet']),)
+]
+visualizer = dict(type='UniversalVisualizer', vis_backends=vis_backends)

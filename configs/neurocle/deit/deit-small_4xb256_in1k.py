@@ -47,3 +47,9 @@ optim_wrapper = dict(
         }),
     clip_grad=dict(max_norm=5.0),
 )
+
+vis_backends = [
+    dict(type='LocalVisBackend'),
+    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['cla', 'deit-small', 'imagenet']),)
+]
+visualizer = dict(type='UniversalVisualizer', vis_backends=vis_backends)

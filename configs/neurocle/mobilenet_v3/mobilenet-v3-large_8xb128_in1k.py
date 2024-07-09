@@ -30,3 +30,9 @@ test_cfg = dict()
 # based on the actual training batch size.
 # base_batch_size = (8 GPUs) x (128 samples per GPU)
 auto_scale_lr = dict(base_batch_size=1024)
+
+vis_backends = [
+    dict(type='LocalVisBackend'),
+    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['cla', 'mobilenetv3large', 'imagenet']),)
+]
+visualizer = dict(type='UniversalVisualizer', vis_backends=vis_backends)

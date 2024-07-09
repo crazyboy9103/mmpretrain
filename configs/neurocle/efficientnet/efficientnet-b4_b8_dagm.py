@@ -13,6 +13,6 @@ model = dict(
 
 vis_backends = [
     dict(type='LocalVisBackend'),
-    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['efnetb4', 'dagm']),)
+    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['cla', 'efnetb4', 'dagm']),)
 ]
 visualizer = dict(type='UniversalVisualizer', vis_backends=vis_backends)

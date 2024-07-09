@@ -6,14 +6,15 @@ _base_ = [
     '../_base_/default_runtime.py'
 ]
 
+image_size=_base_.train_pipeline[1]['scale'][0]
 # model settings
 model = dict(
     type='ImageClassifier',
-    # pretrained='https://download.openmmlab.com/mmclassification/v0/deit/deit-small_pt-4xb256_in1k_20220218-9425b9bb.pth', 
+    pretrained='https://download.openmmlab.com/mmclassification/v0/deit/deit-small_pt-4xb256_in1k_20220218-9425b9bb.pth', 
     backbone=dict(
         type='VisionTransformer',
         arch='deit-small',
-        img_size=224,
+        img_size=image_size,
         patch_size=16),
     neck=None,
     head=dict(
@@ -47,3 +48,9 @@ optim_wrapper = dict(
         }),
     clip_grad=dict(max_norm=5.0),
 )
+
+vis_backends = [
+    dict(type='LocalVisBackend'),
+    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['cla', 'deit-small', 'hanrim']),)
+]
+visualizer = dict(type='UniversalVisualizer', vis_backends=vis_backends)

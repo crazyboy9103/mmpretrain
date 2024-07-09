@@ -1,6 +1,7 @@
 # model settings
 model = dict(
     type='ImageClassifier',
+    pretrained='https://download.openmmlab.com/mmclassification/v0/regnet/regnetx-400mf_8xb128_in1k_20211213-89bfc226.pth',
     backbone=dict(type='RegNet', arch='regnetx_400mf'),
     neck=dict(type='GlobalAveragePooling'),
     head=dict(

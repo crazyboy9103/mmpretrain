@@ -1,8 +1,8 @@
 # In small and tiny arch, remove drop path and EMA hook comparing with the
 # original config
 _base_ = [
-    '../_base_/datasets/dagm_bs8.py',
-    '../_base_/schedules/dagm_swin.py',
+    '../_base_/datasets/leather_bs8.py',
+    '../_base_/schedules/leather_swin.py',
     '../_base_/default_runtime.py'
 ]
 
@@ -51,6 +51,6 @@ optim_wrapper = dict(
 
 vis_backends = [
     dict(type='LocalVisBackend'),
-    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['cla', 'deit-small', 'dagm']),)
+    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['cla', 'deit-small', 'leather']),)
 ]
 visualizer = dict(type='UniversalVisualizer', vis_backends=vis_backends)

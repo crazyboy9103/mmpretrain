@@ -42,7 +42,7 @@ val_dataloader = dict(
     sampler=dict(type='DefaultSampler', shuffle=False),
 )
 val_evaluator = [
-    dict(type='Accuracy', topk=(1, 5)),
+    dict(type='Accuracy', topk=(1,)),
     dict(type='SingleLabelMetric', items=['precision', 'recall', 'f1-score'])
 ]
 
