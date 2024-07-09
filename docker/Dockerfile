@@ -1,5 +1,5 @@
-ARG PYTORCH="1.12.1"
-ARG CUDA="11.3"
+ARG PYTORCH="1.13.1"
+ARG CUDA="11.6"
 ARG CUDNN="8"
 
 FROM pytorch/pytorch:${PYTORCH}-cuda${CUDA}-cudnn${CUDNN}-devel
@@ -21,6 +21,6 @@ RUN pip install openmim
 
 # Install MMPretrain
 RUN conda clean --all
-RUN git clone https://github.com/open-mmlab/mmpretrain.git
-WORKDIR ./mmpretrain
-RUN mim install --no-cache-dir -e .
+RUN cd / && git clone https://github.com/crazyboy9103/mmpretrain.git
+WORKDIR /mmpretrain
+RUN cd /mmpretrain && mim install --no-cache-dir -e .
