@@ -76,11 +76,12 @@ def main():
         model(random_inputs)
 
     time_list_cpu = []
-
-    for _ in range(args.iter):
-        tic = time.perf_counter()
-        model(random_inputs)
-        time_list_cpu.append(time.perf_counter() - tic)
+    
+    with torch.no_grad():
+        for _ in range(args.iter):
+            tic = time.perf_counter()
+            model(random_inputs)
+            time_list_cpu.append(time.perf_counter() - tic)
 
     time_list_cpu = torch.tensor(time_list_cpu)
     fps = 1 / time_list_cpu
@@ -94,12 +95,13 @@ def main():
         for _ in range(args.warmup):
             model(random_inputs)
 
-        for _ in range(args.iter):
-            torch.cuda.synchronize()
-            tic = time.perf_counter()
-            model(random_inputs)
-            torch.cuda.synchronize()
-            time_list_gpu.append(time.perf_counter() - tic)
+        with torch.no_grad():
+            for _ in range(args.iter):
+                torch.cuda.synchronize()
+                tic = time.perf_counter()
+                model(random_inputs)
+                torch.cuda.synchronize()
+                time_list_gpu.append(time.perf_counter() - tic)
 
 
         time_list_gpu = torch.tensor(time_list_gpu)
