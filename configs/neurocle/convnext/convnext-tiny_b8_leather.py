@@ -7,7 +7,7 @@ _base_ = [
 
 # schedule setting
 optim_wrapper = dict(
-    optimizer=dict(lr=1e-3),
+    optimizer=dict(lr=1e-4),
     clip_grad=None,
 )
 
