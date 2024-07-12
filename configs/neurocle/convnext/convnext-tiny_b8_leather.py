@@ -5,19 +5,14 @@ _base_ = [
     '../_base_/default_runtime.py',
 ]
 
-# schedule setting
-optim_wrapper = dict(
-    optimizer=dict(lr=1e-4),
-    clip_grad=None,
-)
-
+# EMAHook does not seem to work well for fine-tuning
 # runtime setting
-custom_hooks = [dict(type='EMAHook', momentum=1e-4, priority='ABOVE_NORMAL')]
+# custom_hooks = [dict(type='EMAHook', momentum=1e-4, priority='ABOVE_NORMAL')]
 
 model = dict(
     head=dict(
-        num_classes={{_base_.data_preprocessor.num_classes}}
-    )
+        num_classes={{_base_.data_preprocessor.num_classes}},
+    ),
 )
 
 vis_backends = [
