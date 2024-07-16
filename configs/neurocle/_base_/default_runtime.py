@@ -15,6 +15,9 @@ default_hooks = dict(
     # save checkpoint per epoch.
     checkpoint=dict(type='CheckpointHook', interval=1, save_best=['single-label/f1-score'], rule='greater', max_keep_ckpts=1, save_last=False),
 
+    # early stopping when the monitored metric reached a plateau.
+    early_stopping=dict(type='EarlyStoppingHook', monitor='single-label/f1-score', min_delta=0.1, patience=5, rule='greater'),
+
     # set sampler seed in distributed evrionment.
     sampler_seed=dict(type='DistSamplerSeedHook'),
 

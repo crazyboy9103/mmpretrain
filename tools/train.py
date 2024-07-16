@@ -10,6 +10,8 @@ from mmengine.runner import Runner
 from mmengine.utils import digit_version
 from mmengine.utils.dl_utils import TORCH_VERSION
 
+import wandb 
+wandb.require("core")
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a model')
