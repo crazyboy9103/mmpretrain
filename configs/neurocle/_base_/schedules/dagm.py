@@ -17,15 +17,15 @@ param_scheduler = [
     # main learning rate scheduler
     dict(
         type='CosineAnnealingLR',
-        T_max=45,
+        T_max=15,
         by_epoch=True,
         begin=5,
-        end=50,
+        end=20,
     )
 ]
 
 # train, val, test setting
-train_cfg = dict(by_epoch=True, max_epochs=50, val_interval=1)
+train_cfg = dict(by_epoch=True, max_epochs=20, val_interval=1)
 val_cfg = dict()
 test_cfg = dict()
 

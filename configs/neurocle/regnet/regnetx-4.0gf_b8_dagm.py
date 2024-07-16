@@ -11,7 +11,7 @@ val_dataloader = dict(batch_size=8)
 # schedule settings
 
 # sgd with nesterov, base ls is 0.8 for batch_size 1024,
-optim_wrapper = dict(optimizer=dict(lr=0.4))
+# optim_wrapper = dict(optimizer=dict(lr=0.4))
 
 # runtime settings
 
@@ -34,6 +34,6 @@ model = dict(
 
 vis_backends = [
     dict(type='LocalVisBackend'),
-    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['cla', 'regnetx-4.0gf', 'hanrim']),)
+    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['cla', 'regnetx-4.0gf', 'dagm']),)
 ]
 visualizer = dict(type='UniversalVisualizer', vis_backends=vis_backends)

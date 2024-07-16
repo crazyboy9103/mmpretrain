@@ -1,6 +1,6 @@
 # optimizer
 optim_wrapper = dict(
-    optimizer=dict(type='Adam', lr=0.001, weight_decay=0.0001))
+    optimizer=dict(type='Adam', lr=0.0001, weight_decay=0.0001))
 
 # learning policy
 param_scheduler = [
@@ -12,20 +12,20 @@ param_scheduler = [
         begin=0,
         end=5,
         # update by iter
-        # convert_to_iter_based=True,
+        convert_to_iter_based=True,
     ),
     # main learning rate scheduler
     dict(
         type='CosineAnnealingLR',
-        T_max=45,
+        T_max=15,
         by_epoch=True,
         begin=5,
-        end=50,
+        end=20,
     )
 ]
 
 # train, val, test setting
-train_cfg = dict(by_epoch=True, max_epochs=50, val_interval=1)
+train_cfg = dict(by_epoch=True, max_epochs=20, val_interval=1)
 val_cfg = dict()
 test_cfg = dict()
 
